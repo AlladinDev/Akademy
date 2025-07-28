@@ -11,19 +11,20 @@ jobs:
   BuildAndTest:
     runs-on: ubuntu-latest
 
-    -name: checkout
-    uses: actions/checkout@v2
+    steps:
+     - name: checkout
+       uses: actions/checkout@v2
 
-    -name: setup node environment
-    uses: actions/setup-node@v2
-    with:
-      node-version: 18
+     - name: setup node environment
+       uses: actions/setup-node@v2
+       with:
+        node-version: 20
 
-    -name: install dependencies
-    run: npm install
+     - name: install dependencies
+       run: npm install
      
-    -name: run tests
-    run: npm run test
+     - name: run tests
+       run: npm run test
 
-    -name: build project
-    run: npm run build
+     - name: build project
+       run: npm run build
