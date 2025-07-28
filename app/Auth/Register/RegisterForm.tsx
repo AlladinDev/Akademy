@@ -1,7 +1,6 @@
 "use client"
 
 import { FormInput } from "@/app/SharedUi/FormInput";
-import { Input } from "@/components/ui/input";
 import { ChangeEvent } from "react";
 import { IUserDetails } from "./types";
 

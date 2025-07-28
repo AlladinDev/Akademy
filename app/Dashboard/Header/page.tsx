@@ -2,7 +2,7 @@
 import { Card } from "@/components/ui/card"
 import { LayoutStore } from "../Store/Layout.store"
 import { Button } from "@/components/ui/button"
-export const Header = () => {
+export default function Page() {
     const { toggleSideBar, isSideBarExpanded } = LayoutStore()
     return (
         <Card className="h-full">

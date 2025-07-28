@@ -5,7 +5,7 @@ import { RegisterForm } from "./RegisterForm";
 import { IUserDetails } from "./types";
 import { ExtractApiResp } from "@/app/Utilities/ExtractApiRespnse";
 import toast from "react-hot-toast";
-import { promise } from "zod";
+
 
 export default function Register() {
     const [formDetails, setFormDetails] = useState<IUserDetails>({
@@ -48,9 +48,12 @@ export default function Register() {
 
         try {
             //now convert numeric string fields like age phoneNumber into number format otherwise backend will give error
-            Object.keys(formDetails as Record<keyof IUserDetails, any>).forEach((key) => {
-                typeof key == "string" && !isNaN(formDetails[key]) ? formDetails[key] = parseInt(formDetails[key]) : key
-            })
+            Object.entries(formDetails).forEach(([key, value]) => {
+                if (typeof value === 'string' && !isNaN(Number(value))) {
+                    (formDetails as Record<string,unknown>)[key as keyof IUserDetails] = parseInt(value);
+                }
+            });
+
 
             //add created at as todays date
             formDetails.createdAt = new Date()
@@ -74,7 +77,7 @@ export default function Register() {
 
 
             if (extractedApiDetails.StatusCode != 200) {
-                return toast.error(extractedApiDetails.Message + ", Reason :"+ extractedApiDetails.Reason, { id: "adminRegistrationToast" })
+                return toast.error(extractedApiDetails.Message + ", Reason :" + extractedApiDetails.Reason, { id: "adminRegistrationToast" })
             }
 
 

@@ -4,11 +4,12 @@ export interface ApiResponse {
     StatusCode: number,
     Message: string,
     Reason: string,
-    Data: any,
-    Errors?: any
+    Data: unknown,
+    Errors?: unknown
 }
 
-export const ExtractApiResp = (resp: any): ApiResponse => {
+
+export const ExtractApiResp = (resp: unknown): ApiResponse => {
     if (!resp || (typeof resp !== "object")) {
         return {
             StatusCode: 500,
@@ -19,6 +20,7 @@ export const ExtractApiResp = (resp: any): ApiResponse => {
         }
     }
 
+    //if resp is an error handle it and extract message and other details from it
     if (resp instanceof Error) {
         return {
             StatusCode: 500,
@@ -29,7 +31,13 @@ export const ExtractApiResp = (resp: any): ApiResponse => {
         }
     }
 
-    const { StatusCode, Message, Reason, Errors, Data } = resp
+    const { StatusCode, Message, Reason, Errors, Data } = resp as {
+        StatusCode: number,
+        Message: string,
+        Reason: string,
+        Errors: Error,
+        Data: unknown
+    }
 
     return {
         StatusCode: StatusCode,

@@ -1,9 +1,8 @@
 "use client"
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import { Sidebar } from "./Dashboard/SideBar/page";
-import { Header } from "./Dashboard/Header/page";
-import { Menu } from "./Dashboard/Menu/page";
+
+import  Sidebar from "./Dashboard/SideBar/page";
+import Header from "./Dashboard/Header/page";
+import  Menu  from "./Dashboard/Menu/page";
 
 export default function Home() {
 

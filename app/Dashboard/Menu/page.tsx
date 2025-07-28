@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card"
 
-export const Menu=()=>{
+export default function Menu(){
     return (
         <Card className="h-full">
 

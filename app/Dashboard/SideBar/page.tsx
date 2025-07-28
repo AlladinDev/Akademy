@@ -4,28 +4,10 @@ import { LayoutStore } from "../Store/Layout.store"
 import { House } from "lucide-react"
 import Image from "next/image"
 import "./Sidebar.css"
-import { useEffect } from "react"
-export const Sidebar = () => {
 
-    const { setSideBarWidth, sideBarWidth, toggleSideBar } = LayoutStore()
+export default function Sidebar () {
 
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth < 768) {
-                setSideBarWidth("0px");
-                toggleSideBar(true)
-            } else {
-               
-                setSideBarWidth("280px");
-                toggleSideBar(true)
-            }
-        };
-
-        window.addEventListener("resize", handleResize);
-        handleResize();
-
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
+    const {  sideBarWidth } = LayoutStore()
 
     return (
         <Card className="size-full transition-all duration-700 overflow-x-hidden w-0 md:w-full" style={{ width: sideBarWidth }} >
