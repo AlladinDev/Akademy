@@ -1,3 +1,4 @@
+"use client"
 import { Card } from "@/components/ui/card"
 import { LayoutStore } from "../Store/Layout.store"
 import { House } from "lucide-react"
