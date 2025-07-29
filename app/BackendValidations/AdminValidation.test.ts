@@ -30,7 +30,7 @@ describe("testing Zod Admin Registration Schema", () => {
         if (!zodRes.error) {
             return
         }
-        expect(FormatZodErrors(zodRes.error?.issues!)).toEqual(expectedRes)
+        expect(FormatZodErrors(zodRes.error.issues)).toEqual(expectedRes)
     })
 
     it("should handle cases when even a single field or all values exceeding max length allowed", () => {
@@ -61,7 +61,7 @@ describe("testing Zod Admin Registration Schema", () => {
         if (!zodRes.error) {
             return
         }
-        expect(FormatZodErrors(zodRes.error?.issues!)).toEqual(expectedRes)
+        expect(FormatZodErrors(zodRes.error.issues)).toEqual(expectedRes)
     })
 
     it("it should handle invalid cases like passing number for string values and vice versa", () => {
@@ -93,6 +93,6 @@ describe("testing Zod Admin Registration Schema", () => {
         if (!zodRes.error) {
             return
         }
-        expect(FormatZodErrors(zodRes.error?.issues)).toEqual(expectedRes)
+        expect(FormatZodErrors(zodRes.error.issues)).toEqual(expectedRes)
     })
 })
