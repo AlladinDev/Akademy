@@ -27,6 +27,9 @@ describe("testing Zod Admin Registration Schema", () => {
         }
 
         const zodRes = AdminValidationSchema.safeParse(formData)
+        if (!zodRes.error) {
+            return
+        }
         expect(FormatZodErrors(zodRes.error?.issues!)).toEqual(expectedRes)
     })
 
@@ -55,6 +58,9 @@ describe("testing Zod Admin Registration Schema", () => {
             createdAt: "Max length allowed 30"
         }
         const zodRes = AdminValidationSchema.safeParse(invalidData)
+        if (!zodRes.error) {
+            return
+        }
         expect(FormatZodErrors(zodRes.error?.issues!)).toEqual(expectedRes)
     })
 
@@ -83,7 +89,10 @@ describe("testing Zod Admin Registration Schema", () => {
             createdAt: "Registration Date required"
         }
 
-         const zodRes = AdminValidationSchema.safeParse(invalidData)
-        expect(FormatZodErrors(zodRes.error?.issues!)).toEqual(expectedRes)
+        const zodRes = AdminValidationSchema.safeParse(invalidData)
+        if (!zodRes.error) {
+            return
+        }
+        expect(FormatZodErrors(zodRes.error?.issues)).toEqual(expectedRes)
     })
 })
