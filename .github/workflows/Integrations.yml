@@ -29,15 +29,7 @@ jobs:
      - name: build project
        run: npm run build
 
-  BuildDockerImage:
-     needs: BuildAndTest
-     runs-on: ubuntu-latest
 
-     -name: checkout first
-     uses: actions/checkout@v2
-
-     -name: build docker image
-     run: docker build  . -t nextimage
       
       
         

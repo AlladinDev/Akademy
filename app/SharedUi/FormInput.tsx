@@ -18,9 +18,9 @@ interface IFormInputs {
 
 export const FormInput: React.FC<IFormInputs> = (props: IFormInputs) => {
     //check here value should be string or number only
-    if (typeof props.value !== "string" ||typeof  props.value !== "number") {
-        return
-    }
+    // if (typeof props.value !== "string" ||typeof  props.value !== "number") {
+    //     return
+    // }
 
     //set default type as text for input
 

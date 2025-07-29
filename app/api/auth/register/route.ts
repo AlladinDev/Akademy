@@ -1,6 +1,7 @@
 import { ConnectToMongodD } from "@/app/BackendConfig/ConnectToDb";
 import { AdminValidationSchema } from "@/app/BackendValidations/Admin.validation";
 import { AdminModel } from "@/app/Models/Admin";
+import { FormatZodErrors } from "@/app/Utilities/FormatZodErrors";
 import { ApiError, ApiSuccess } from "@/BackendTypes/ApiResponse.type";
 import bcrypt from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
@@ -13,12 +14,13 @@ export async function POST(req: NextRequest) {
 
         //validate the data and return error if any
         const validationRes = AdminValidationSchema.safeParse(adminDetails)
+        
         if (!validationRes.success) {
             return NextResponse.json({
                 Message: "Validation Failed",
                 Reason: "Invalid Details",
                 StatusCode: 400,
-                Errors: validationRes.error
+                Errors: FormatZodErrors(validationRes.error.issues)
             } satisfies ApiError, { status: 400 })
         }
 
@@ -43,9 +45,9 @@ export async function POST(req: NextRequest) {
         adminDetails.password = await bcrypt.hash(adminDetails.password, 10)
 
         //add userType as admin
-        adminDetails.userType="admin"
+        adminDetails.userType = "admin"
 
-        adminDetails.photo="https://admin.jpg"
+        adminDetails.photo = "https://admin.jpg"
 
         //now register admin
         await AdminModel.insertOne(adminDetails)
