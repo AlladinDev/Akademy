@@ -24,11 +24,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" id="body" className="transition-colors duration-300">
       <body
         className={` ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Toaster/>
+        <Toaster />
         {children}
       </body>
     </html>

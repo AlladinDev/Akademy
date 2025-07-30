@@ -94,8 +94,10 @@
 
 .dark {
   --background: #19191a;
+  /* --background:#262626; */
   --foreground: #fafafa;
   --card: #19191a;
+  /* --card:#262626; */
   --card-foreground: #fafafa;
   --popover: #262626;
   --popover-foreground: #fafafa;
@@ -109,7 +111,11 @@
   --accent-foreground: #fafafa;
   --destructive: #ff6568;
   --destructive-foreground: #fafafa;
-  --border: #282828;
+  /* --border: #282828; */
+
+  /* //i added this border colour for better visibility in dark mode otherwise original border for dark mode was; --border: #282828;*/
+  --border:var(--color-accent);
+  
   --input: #343434;
   --ring: #737373;
   --chart-1: #92c5ff;
@@ -201,3 +207,27 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Hide scrollbar background and buttons (cross-browser) */
+
+/* For Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  display: none; /* Keep small width or set to 0 to fully hide */
+}
+
+::-webkit-scrollbar-track {
+  display: none;
+  background: transparent; /* Hides scrollbar background */
+}
+
+::-webkit-scrollbar-thumb {
+  display: none;
+ 
+}
+
+::-webkit-scrollbar-button {
+  display: none; /* Hides top/bottom scroll buttons */
+}
+
+
+

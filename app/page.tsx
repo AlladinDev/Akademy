@@ -7,8 +7,8 @@ import  Menu  from "./Dashboard/Menu/page";
 export default function Home() {
 
   return (
-    <div className="flex justify-between p-1 items-center h-[100dvh] relative border border-green-600">
-      <div className={`transition-all duration-600 h-full overflow-y-auto absolute sm:relative  overflow-x-hidden `} >
+    <div className="flex justify-between p-1 items-center h-[100dvh] relative ">
+      <div className={`h-full absolute sm:relative  `} >
         <Sidebar />
       </div>
       <div className="w-full  h-full px-2  ">
